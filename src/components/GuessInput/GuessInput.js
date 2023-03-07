@@ -10,11 +10,7 @@ function GuessInput({ handleAddGuess }) {
       return;
     }
 
-    const newGuess = {
-      guess,
-      id: Math.random(),
-    };
-    handleAddGuess(newGuess);
+    handleAddGuess(guess);
     setGuess('');
   }
 

@@ -5,8 +5,16 @@ function GuessInput({ handleAddGuess }) {
 
   function handleSubmit(event) {
     event.preventDefault();
+    if (guess.length !== 5) {
+      window.alert('Word has to have exactly five letters');
+      return;
+    }
 
-    handleAddGuess(guess);
+    const newGuess = {
+      guess,
+      id: Math.random(),
+    };
+    handleAddGuess(newGuess);
     setGuess('');
   }
 

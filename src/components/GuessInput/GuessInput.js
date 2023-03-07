@@ -6,8 +6,7 @@ function GuessInput({ handleAddGuess }) {
   function handleSubmit(event) {
     event.preventDefault();
 
-    const formatedGuess = guess.toUpperCase();
-    handleAddGuess(formatedGuess);
+    handleAddGuess(guess);
     setGuess('');
   }
 
@@ -22,7 +21,10 @@ function GuessInput({ handleAddGuess }) {
         maxLength={5}
         // pattern={/[a-zA-Z]/gi}
         title='Five letter word'
-        onChange={(event) => setGuess(event.target.value)}
+        onChange={(event) => {
+          const formatedInput = event.target.value.toUpperCase();
+          setGuess(formatedInput);
+        }}
       />
     </form>
   );

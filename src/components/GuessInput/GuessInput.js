@@ -27,7 +27,7 @@ function GuessInput({ handleAddGuess }) {
         value={guess}
         minLength={5}
         maxLength={5}
-        // pattern={/[a-zA-Z]/gi}
+        pattern='[a-zA-Z]{5}'
         title='Five letter word'
         onChange={(event) => {
           const formatedInput = event.target.value.toUpperCase();

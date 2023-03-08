@@ -1,6 +1,7 @@
 import React from 'react';
 import GuessInput from '../GuessInput';
 import GuessResults from '../GuessResults';
+import { BannerHappy, BannerSad } from '../Banner';
 
 import { sample } from '../../utils';
 import { WORDS } from '../../data';
@@ -14,17 +15,28 @@ console.info({ answer });
 
 function Game() {
   const [guessResultsList, setGuessResultsList] = React.useState([]);
+  const [numOfGuesses, setNumOfGuesses] = React.useState(0);
+  const [gameEnd, setGameEnd] = React.useState(false);
+  const [isGameWon, setIsGameWon] = React.useState(false);
 
   function handleAddGuess(newGuess) {
-    if (guessResultsList.length >= NUM_OF_GUESSES_ALLOWED) {
+    const [result, isCorrect] = checkGuess(newGuess, answer);
+    const guess = {
+      guess: result,
+      isCorrect,
+    };
+    setGuessResultsList([...guessResultsList, guess]);
+
+    console.log('check if is correct: ', isCorrect);
+    isCorrect && setIsGameWon(true);
+    console.log({ isGameWon });
+
+    if (numOfGuesses === NUM_OF_GUESSES_ALLOWED || isGameWon) {
+      setGameEnd(true);
       return;
     }
 
-    const checkedGuess = {
-      guess: checkGuess(newGuess, answer),
-    };
-
-    setGuessResultsList([...guessResultsList, checkedGuess]);
+    setNumOfGuesses(numOfGuesses + 1);
   }
 
   return (
@@ -34,6 +46,12 @@ function Game() {
         guessResultsList={guessResultsList}
       />
       <GuessInput handleAddGuess={handleAddGuess} />
+      {gameEnd &&
+        (isGameWon ? (
+          <BannerHappy>{numOfGuesses}</BannerHappy>
+        ) : (
+          <BannerSad>{answer}</BannerSad>
+        ))}
     </>
   );
 }

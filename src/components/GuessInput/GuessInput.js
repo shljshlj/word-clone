@@ -5,10 +5,6 @@ function GuessInput({ handleAddGuess }) {
 
   function handleSubmit(event) {
     event.preventDefault();
-    if (guess.length !== 5) {
-      window.alert('Word has to have exactly five letters');
-      return;
-    }
 
     handleAddGuess(guess);
     setGuess('');
@@ -21,13 +17,14 @@ function GuessInput({ handleAddGuess }) {
         id='guess-input'
         type='text'
         value={guess}
+        required
         minLength={5}
         maxLength={5}
         pattern='[a-zA-Z]{5}'
         title='Five letter word'
         onChange={(event) => {
-          const formatedInput = event.target.value.toUpperCase();
-          setGuess(formatedInput);
+          const nextGuess = event.target.value.toUpperCase();
+          setGuess(nextGuess);
         }}
       />
     </form>

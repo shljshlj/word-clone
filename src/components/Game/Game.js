@@ -19,8 +19,8 @@ function Game() {
   const [gameEnd, setGameEnd] = React.useState(false);
   const [isGameWon, setIsGameWon] = React.useState(false);
 
-  function handleSubmitGuess(newGuess) {
-    const [result, isCorrect] = checkGuess(newGuess, answer);
+  function handleSubmitGuess(tentativeGuess) {
+    const [result, isCorrect] = checkGuess(tentativeGuess, answer);
     const guess = {
       guess: result,
       isCorrect,
@@ -41,7 +41,7 @@ function Game() {
 
   return (
     <>
-      <GuessResults numOfGuesses={NUM_OF_GUESSES_ALLOWED} guesses={guesses} />
+      <GuessResults guesses={guesses} />
       <GuessInput handleSubmitGuess={handleSubmitGuess} />
       {gameEnd &&
         (isGameWon ? (

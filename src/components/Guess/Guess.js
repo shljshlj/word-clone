@@ -2,15 +2,15 @@ import React from 'react';
 
 import { range } from '../../utils';
 
-function Guess({ guess = [] }) {
+function Guess({ value = [] }) {
   return (
     <p className='guess'>
-      {range(5).map((idx) => (
+      {range(5).map((num) => (
         <span
-          key={idx}
-          className={`cell${guess.length ? ' ' + guess[idx]?.status : ''}`}
+          key={num}
+          className={`cell${value.length ? ' ' + value[num]?.status : ''}`}
         >
-          {guess[idx]?.letter || ''}
+          {value[num]?.letter}
         </span>
       ))}
     </p>

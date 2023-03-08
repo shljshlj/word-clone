@@ -1,11 +1,7 @@
 import React from 'react';
 
 function Banner({ status, children }) {
-  return (
-    <div className={`banner ${status}`}>
-      <p>{children}</p>
-    </div>
-  );
+  return <div className={`banner ${status}`}>{children}</div>;
 }
 
 export default Banner;

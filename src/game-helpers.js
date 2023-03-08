@@ -7,7 +7,6 @@ export function checkGuess(guess, answer) {
   // This constant is a placeholder that indicates we've successfully
   // dealt with this character (it's correct, or misplaced).
   const SOLVED_CHAR = '✓';
-  let isCorrect = true;
 
   if (!guess) {
     return null;
@@ -27,8 +26,6 @@ export function checkGuess(guess, answer) {
       };
       answerChars[i] = SOLVED_CHAR;
       guessChars[i] = SOLVED_CHAR;
-    } else {
-      isCorrect = false;
     }
   }
 
@@ -39,7 +36,6 @@ export function checkGuess(guess, answer) {
       continue;
     }
 
-    isCorrect = false;
     let status = 'incorrect';
     const misplacedIndex = answerChars.findIndex(
       (char) => char === guessChars[i]
@@ -55,5 +51,5 @@ export function checkGuess(guess, answer) {
     };
   }
 
-  return [result, isCorrect];
+  return result;
 }

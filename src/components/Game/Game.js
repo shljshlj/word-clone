@@ -14,18 +14,18 @@ const answer = sample(WORDS);
 console.info({ answer });
 
 function Game() {
-  const [guessResultsList, setGuessResultsList] = React.useState([]);
+  const [guesses, setGuesses] = React.useState([]);
   const [numOfGuesses, setNumOfGuesses] = React.useState(0);
   const [gameEnd, setGameEnd] = React.useState(false);
   const [isGameWon, setIsGameWon] = React.useState(false);
 
-  function handleAddGuess(newGuess) {
+  function handleSubmitGuess(newGuess) {
     const [result, isCorrect] = checkGuess(newGuess, answer);
     const guess = {
       guess: result,
       isCorrect,
     };
-    setGuessResultsList([...guessResultsList, guess]);
+    setGuesses([...guesses, guess]);
 
     console.log('check if is correct: ', isCorrect);
     isCorrect && setIsGameWon(true);
@@ -43,9 +43,9 @@ function Game() {
     <>
       <GuessResults
         numOfGuesses={NUM_OF_GUESSES_ALLOWED}
-        guessResultsList={guessResultsList}
+        setGuesses={guesses}
       />
-      <GuessInput handleAddGuess={handleAddGuess} />
+      <GuessInput handleSubmitGuess={handleSubmitGuess} />
       {gameEnd &&
         (isGameWon ? (
           <BannerHappy>{numOfGuesses}</BannerHappy>

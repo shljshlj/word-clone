@@ -41,10 +41,7 @@ function Game() {
 
   return (
     <>
-      <GuessResults
-        numOfGuesses={NUM_OF_GUESSES_ALLOWED}
-        setGuesses={guesses}
-      />
+      <GuessResults numOfGuesses={NUM_OF_GUESSES_ALLOWED} guesses={guesses} />
       <GuessInput handleSubmitGuess={handleSubmitGuess} />
       {gameEnd &&
         (isGameWon ? (

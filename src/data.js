@@ -1,4 +1,6 @@
 export const WORDS = [
+  'WHERE',
+  'SLEEP',
   'AGENT',
   'WORLD',
   'ABOUT',

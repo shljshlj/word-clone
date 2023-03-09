@@ -230,3 +230,44 @@ h1 {
     transform: translateY(0%);
   }
 }
+
+/*
+  Keyboard
+*/
+
+.keyboard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.keyboard-row {
+  display: flex;
+  flex-direction: row;
+  gap: 6px;
+}
+
+.letter {
+  width: 3rem;
+  height: 3.5rem;
+  border-radius: 4px;
+  display: grid;
+  place-content: center;
+  color: white;
+  background-color: var(--color-gray-500);
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  user-select: none;
+}
+
+.letter.correct {
+  background: var(--color-success);
+}
+.letter.incorrect {
+  background: var(--color-gray-300);
+}
+.letter.misplaced {
+  background: var(--color-warning);
+}

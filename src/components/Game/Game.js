@@ -35,7 +35,7 @@ function Game() {
 
   return (
     <>
-      <GuessResults guesses={guesses} answer={answer} />
+      <GuessResults validatedGuesses={validatedGuesses} answer={answer} />
       <GuessInput
         gameStatus={gameStatus}
         handleSubmitGuess={handleSubmitGuess}
